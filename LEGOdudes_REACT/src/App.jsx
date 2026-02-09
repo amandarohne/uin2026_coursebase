@@ -8,6 +8,7 @@ function App() {
   const [cartQuantity, setCartQuantity] = useState(0)
 
   console.log("Cart", cart)
+<<<<<<< HEAD
 
   useEffect(() =>{
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0)
@@ -15,6 +16,13 @@ function App() {
     setCartQuantity(totalQuantity)
   }, [cart])
 
+=======
+  useEffect(()=>{
+    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0)
+    setCartQuantity(totalQuantity)
+  },[cart])
+
+>>>>>>> 1ce3dba0f74b859c4e4216b091ba9b3ad9241936
   function Header({setIsOpen, cartQuantity}){
     return(
       <header>
@@ -56,12 +64,23 @@ function App() {
   }
 
   function ProductCard({p, setCart}){
+<<<<<<< HEAD
 
     const handleClick = ()=>{
       setCart((prev) => 
         prev.some(item => item.prodid === p.prodid) ?
         prev.map(item => item.prodid === p.prodid ? {...item, quantity: item.quantity + 1} 
         : item ) : [...prev, {...p, quantity: 1}])
+=======
+    
+    const handleClick = ()=>{
+      setCart((prev) => 
+        prev.some(item => item.prodid === p.prodid) ?
+        prev.map(item =>  item.prodid === p.prodid ? {...item, quantity: item.quantity + 1}
+        : item 
+        ) : 
+        [...prev, {...p, quantity: 1}])
+>>>>>>> 1ce3dba0f74b859c4e4216b091ba9b3ad9241936
       console.log("Legg i handlekurv")
     }
 
@@ -81,7 +100,11 @@ function App() {
       <section id="cart" className={isOpen ? "" : "hidden"}>
             <table id="cart-items">
               <tbody>
+<<<<<<< HEAD
                 {cart.lenght <= 0 ?
+=======
+                {cart.length <= 0 ?
+>>>>>>> 1ce3dba0f74b859c4e4216b091ba9b3ad9241936
                   (<tr>
                     <td>Ingen varer i handlevognen enda.</td>
                   </tr>) : (cart.map(p => <CartItem key={p.prodid} p={p} setCart={setCart} />))
@@ -94,8 +117,12 @@ function App() {
   }
   
   function CartItem({p, setCart}){
+<<<<<<< HEAD
 
     const removeFromcart = (prodid)=>{
+=======
+    const removeFromCart = (prodid)=>{
+>>>>>>> 1ce3dba0f74b859c4e4216b091ba9b3ad9241936
       setCart(prev => prev.map(item => item.prodid === prodid ? {...item, quantity: item.quantity - 1}: item)
       .filter(item => item.quantity > 0)
     )
@@ -107,7 +134,11 @@ function App() {
         <td className="title">{p.title}</td>
         <td className="price">{p.price}</td>
         <td className="quantity">{p.quantity}</td>
+<<<<<<< HEAD
         <td className="delete"><button onClick={()=>removeFromcart(p.prodid)}>X</button></td>
+=======
+        <td className="delete"><button onClick={()=>removeFromCart(p.prodid)}>X</button></td>
+>>>>>>> 1ce3dba0f74b859c4e4216b091ba9b3ad9241936
       </tr>
     )
   }  
